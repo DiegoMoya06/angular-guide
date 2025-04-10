@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LoggerService} from '../services/logger.service';
 
 @Component({
   selector: 'app-home',
@@ -7,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  constructor(private logger:LoggerService) {
+  }
 
+  sayHello(){
+    this.logger.log("Hello from Home!");
+  }
 }
