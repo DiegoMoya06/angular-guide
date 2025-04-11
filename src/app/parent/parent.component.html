@@ -1,4 +1,4 @@
-<h2>Parent Component</h2>
+<h2>User Management</h2>
 <p>Message from child: {{ childReply }}</p>
 
 <hr />
@@ -7,4 +7,25 @@
   [messageFromParent]="parentMessage"
   (notifyParent)="handleChildMessage($event)">
 </app-child>
+
+<hr/>
+
+<app-user-form (addUser)="addUser($event)"></app-user-form>
+
+<hr />
+
+<h3>Users List:</h3>
+<div *ngFor="let user of users">
+  <app-user-card
+    [name]="user"
+    (selected)="onUserSelected($event)">
+  </app-user-card>
+</div>
+
+<hr />
+
+<div *ngIf="selectedUser">
+  <h3>Selected User:</h3>
+  <p>{{ selectedUser }}</p>
+</div>
 
