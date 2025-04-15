@@ -1,4 +1,15 @@
-<div>
-  <strong>{{name}}</strong>
-  <button (click)="selectUser()">Select</button>
+<div class="border p-4 rounded shadow-sm flex justify-between items-center mb-3">
+  <ng-container *ngIf="!isEditing; else editMode">
+    <span class="font-semibold text-gray-700">{{ name }}</span>
+    <div class="flex gap-2">
+      <button class="bg-blue-500 text-white px-2 rounded" (click)="selected.emit(name)">Select</button>
+      <button class="bg-yellow-500 text-white px-2 rounded" (click)="startEdit()">Edit</button>
+      <button class="bg-red-500 text-white px-2 rounded" (click)="deleted.emit(name)">Delete</button>
+    </div>
+  </ng-container>
+
+  <ng-template #editMode>
+    <input [(ngModel)]="newName" class="border px-2 py-1 rounded w-full mr-2" />
+    <button class="bg-green-600 text-white px-2 rounded" (click)="saveEdit()">Save</button>
+  </ng-template>
 </div>

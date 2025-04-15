@@ -3,29 +3,37 @@ import {CommonModule} from '@angular/common';
 import {ChildComponent} from '../child/child.component';
 import {UserCardComponent} from '../user-card/user-card.component';
 import {UserFormComponent} from '../user-form/user-form.component';
+import {UserService} from "../services/user.service";
 
 @Component({
-  selector: 'app-parent',
-  standalone: true,
-  imports: [CommonModule, UserCardComponent, UserFormComponent, ChildComponent],
-  templateUrl: './parent.component.html',
-  styleUrl: './parent.component.css'
+    selector: 'app-parent',
+    standalone: true,
+    imports: [CommonModule, UserCardComponent, UserFormComponent, ChildComponent],
+    templateUrl: './parent.component.html',
+    styleUrl: './parent.component.css'
 })
 export class ParentComponent {
-  users = ['John', 'Alice'];
-  selectedUser: string | null = null;
-  parentMessage = "Hi from Parent!";
-  childReply = "";
+    users: string[] = [];
+    selectedUser: string | null = null;
+    parentMessage = "Hi from Parent!";
+    childReply = "";
 
-  addUser(name: string) {
-    this.users.push(name);
-  }
+    constructor(private userService: UserService) {
+    };
 
-  onUserSelected(name: string) {
-    this.selectedUser = name;
-  }
+    ngOnInit(): void {
+        this.userService.users$.subscribe(users => this.users = users);
+    }
 
-  handleChildMessage(message: string) {
-    this.childReply = message;
-  }
+    addUser(name: string) {
+        this.userService.addUser(name);
+    }
+
+    onUserSelected(name: string) {
+        this.selectedUser = name;
+    }
+
+    handleChildMessage(message: string) {
+        this.childReply = message;
+    }
 }
