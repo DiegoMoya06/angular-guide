@@ -4,15 +4,16 @@
 
     <h1>{{ title }}</h1>
 
-<!-- ngModel: Creates a FormControl instance from a domain model and binds it to a form control element.    -->
-    <input [(ngModel)]="title" placeholder="Change the title..." />
+    <!-- ngModel: Creates a FormControl instance from a domain model and binds it to a form control element.    -->
+    <input [(ngModel)]="title" placeholder="Change the title..."/>
   </div>
 
-<!-- Routing -->
+  <!-- Routing -->
   <nav>
     <a style="margin-right: 1rem" routerLink="/">Home</a>
-    <a routerLink="/about">About</a>
+    <a style="margin-right: 1rem" routerLink="/about">About</a>
+    <a routerLink="/parent">Parent</a>
   </nav>
 
-  <router-outlet />
+  <router-outlet/>
 </main>
