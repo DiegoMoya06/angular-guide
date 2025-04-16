@@ -2,9 +2,9 @@
   <ng-container *ngIf="!isEditing; else editMode">
     <span class="font-semibold text-gray-700">{{ name }}</span>
     <div class="flex gap-2">
-      <button class="bg-blue-500 text-white px-2 rounded" (click)="selected.emit(name)">Select</button>
+      <button class="bg-blue-500 text-white px-2 rounded" (click)="selectUser()">Select</button>
       <button class="bg-yellow-500 text-white px-2 rounded" (click)="startEdit()">Edit</button>
-      <button class="bg-red-500 text-white px-2 rounded" (click)="deleted.emit(name)">Delete</button>
+      <button class="bg-red-500 text-white px-2 rounded" (click)="deleteUser()">Delete</button>
     </div>
   </ng-container>
 

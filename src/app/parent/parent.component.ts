@@ -36,4 +36,12 @@ export class ParentComponent {
     handleChildMessage(message: string) {
         this.childReply = message;
     }
+
+    editUser(event: { old:string; new:string}){
+        this.userService.updateUser(event.old,event.new);
+    }
+
+    deleteUser(name:string){
+        this.userService.deleteUser(name);
+    }
 }
