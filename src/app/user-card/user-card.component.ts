@@ -14,13 +14,19 @@ export class UserCardComponent {
     @Output() selected = new EventEmitter<string>();
     @Output() edited = new EventEmitter<{ old: string; new: string }>();
     @Output() deleted = new EventEmitter<string>();
+    // TODO: check
+    // @Output() editingChange = new EventEmitter<boolean>();
 
     isEditing = false;
     newName = '';
+    currentSelected = '';
 
     startEdit() {
         this.isEditing = true;
         this.newName = this.name;
+        console.log("Selected",this.name);
+        // TODO: check
+        // this.editingChange.emit(this.isEditing);
     }
 
     saveEdit() {
@@ -31,6 +37,11 @@ export class UserCardComponent {
     }
 
     selectUser() {
+        // this.currentSelected = this.name;
         this.selected.emit(this.name);
+    }
+
+    deleteUser(){
+        this.deleted.emit(this.name);
     }
 }
